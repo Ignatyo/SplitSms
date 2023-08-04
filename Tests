@@ -1,0 +1,87 @@
+// Ex.1
+String text = "a";
+int limit = 12;
+Output: a
+
+
+// Ex.2
+String text = "aaa a aaa aa";
+int limit = 12;
+Output: aaa a aaa aa
+
+
+// Ex.3
+String text = "d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d";
+int limit = 12;
+Output: d d d d 1/9
+        d d d d 2/9
+        d d d d 3/9
+        d d d d 4/9
+        d d d d 5/9
+        d d d d 6/9
+        d d d d 7/9
+        d d d d 8/9
+        d d d d 9/9
+
+
+// Ex.4
+String text = "первое слово в данном сообщении является стартовым примером";
+int limit = 15;
+Output: первое 1/7
+        слово в 2/7
+        данном 3/7
+        сообщении 4/7
+        является 5/7
+        стартовым 6/7
+        примером 7/7
+
+
+// Ex.5
+String text = "aaaa aaa aaaa a a a aaaaa aaaaaa aaaaaaaa aaaaaa aaaaaa aaaaaa";
+int limit = 12;
+Output: aaaa aaa 1/8
+        aaaa a a 2/8
+        a aaaaa 3/8
+        aaaaaa 4/8
+        aaaaaaaa 5/8
+        aaaaaa 6/8
+        aaaaaa 7/8
+        aaaaaa 8/8
+
+
+// Ex.6 (Перерасчет длины с учетом увеличенного  суффикса)
+String text = "aaaa aaa aaaa a a a aaaaa aaaaaa aaaaaa aaaaa aaaaa aaaaa aaaaa aaaaaa";
+int limit = 12;
+Output: aaaa 1/12
+        aaa 2/12
+        aaaa a 3/12
+        a a 4/12
+        aaaaa 5/12
+        aaaaaa 6/12
+        aaaaaa 7/12
+        aaaaa 8/12
+        aaaaa 9/12
+        aaaaa 10/12
+        aaaaa 11/12
+        aaaaaa 12/12
+
+
+// Ex.7 (Some real text)
+String text = "Movies can be divided into several different genres There are exciting action movies with gun fights and car chases and horror movies that make us jump in our seats There are comedies that make us laugh and dramas that make us cry. Sci-fi movies show us what the future might be like historical films tell us stories from the past and documentaries show us real people and events";
+int limit = 32;
+Output: Movies can be divided into 1/15
+        several different genres 2/15
+        There are exciting action 3/15
+        movies with gun fights and 4/15
+        car chases and horror 5/15
+        movies that make us jump in 6/15
+        our seats There are 7/15
+        comedies that make us laugh 8/15
+        and dramas that make us 9/15
+        cry. Sci-fi movies show us 10/15
+        what the future might be 11/15
+        like historical films tell 12/15
+        us stories from the past 13/15
+        and documentaries show us 14/15
+        real people and events 15/15
+
