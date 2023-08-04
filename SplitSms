@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class SplitSms {
+    public static List<String> splitBySms(String text, int limit) {
+        String[] words = text.split(" ");
+        List<String> list = new ArrayList<>();
+        StringBuilder curSms = new StringBuilder();
+        StringBuilder n = new StringBuilder(); // (totalNumber + n).length() - разрядность числа общего кол-ва элементов
+        int smsCnt = 1; // Порядковый номер СМС
+        int totalNumber = text.length() / (limit - 4); // Минимальное количество СМС (Нижняя граница)
+        // Проверка на вместимость всего текста в первую СМС
+        String trimText = text.trim();
+        if (trimText.length() <= limit){
+            list.add(text);
+            return list;
+        }
+        for (int i = 0; i < words.length; i++){
+            if (curSms.length() + words[i].length() + (" " + smsCnt + "/" + totalNumber + n).length() <= limit) {
+                curSms.append(words[i]).append(" ");
+            } else {
+                if (curSms.length() > 0) {
+                    list.add(curSms.toString().trim());
+                }
+                curSms = new StringBuilder(words[i] + " ");
+                smsCnt++;
+            }
+            if (("" + smsCnt).length() > ("" + n + totalNumber).length()){
+                n.append(" ");
+                list.clear();
+                i = -1;
+                smsCnt = 1;
+                curSms = new StringBuilder();
+            }
+        }
+        if (curSms.length() > 0) {
+            list.add(curSms.toString().trim());
+        }
+        if (smsCnt > 1) {
+            for (int i = 0; i < list.size(); i++) {
+                String suffix = " " + (i + 1) + "/" + smsCnt;
+                list.set(i, list.get(i) + suffix);
+            }
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        String text = "Movies can be divided into several different genres There are exciting action movies with gun fights and car chases and horror movies that make us jump in our seats There are comedies that make us laugh and dramas that make us cry. Sci-fi movies show us what the future might be like historical films tell us stories from the past and documentaries show us real people and events";
+        int limit = 32;
+        List<String> smsList = splitBySms(text, limit);
+        for (String sms : smsList) {
+            System.out.println(sms);
+        }
+    }
+}
